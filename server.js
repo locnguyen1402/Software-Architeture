@@ -1,58 +1,71 @@
 const express = require('express');
 const app = express();
-app.set('view engine', 'ejs');
-const port = 9999;
-var bodyParser = require('body-parser');
 var fs = require('fs');
+const port = 9999;
+
+app.set('view engine', 'ejs');
 app.use('/dist', express.static('dist'));
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://locnguyen:loveyou171@ds125673.mlab.com:25673/shoesshop');
+app.use('/public', express.static('public'));
 
-var ShoesSchema = new mongoose.Schema({
-    id: Number,
-    brand: String,
-    color: String,
-    price: Number  
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://Idol:a123456@ds123783.mlab.com:23783/idol-management');
+
+// create schema
+var Idolschema = new mongoose.Schema({
+    name: String,
+    phone: String,
+    description: String,
+    img: String,
 });
-var Shoes = mongoose.model('Shoes', ShoesSchema);
+// store idol document in a collection called Idol
+var Idol = mongoose.model('Idol', Idolschema);
 
-//const mongoose = require('mongoose');
-//app.use('/public',express.static('public'));
-
-/* mongoose.connect('mongodb://locnguyen:loveyou171@ds125673.mlab.com:25673/shoesshop');
-
-var ShoesSchema = new mongoose.Schema({
-    id: Number,
-    brand: String,
-    color: String,
-    price: Number  
+/* var idolOne = Idol({
+    name: "Elly Trần",
+    phone: "090xxxxx09",
+    description: "Da trắng, ngực khủng",
+    img: "https://i.imgur.com/bLcYlrM.jpg",
+}).save(function(err){
+    if(err) throw err;
+    console.log('saved idol');
 });
 
-var Shoes = mongoose.model('Shoes', ShoesSchema);
-var Shoes1 = Shoes({ 
-        id: 1,
-        brand: "adidas",
-        color: "blue",
-        price: Math.floor(Math.random()+1000)+500,
-    }).save( (err)=> {
-        if(err) throw err;
-        console.log("shoes saved");
-    }); */
-
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-app.get('/', (req,res)=>{
-    console.log('request url: '+req.url);
-    //console.log(__dirname,__filename);
-    res.render('index');
-    
+var idolTwo = Idol({
+    name: "Minh Tú",
+    phone: "090xxxxx09",
+    description: "Da ngâm, nóng bỏng và môi cong",
+    img: "https://i.imgur.com/75warp7.jpg",
+}).save(function(err){
+    if(err) throw err;
+    console.log('saved idol');
 });
+
+
+var idolThree = Idol({
+    name: "Phạm Hương",
+    phone: "090xxxxx09",
+    description: "Da trắng, ngực nở",
+    img: "https://i.imgur.com/aOr0TQ0.jpg",
+}).save(function(err){
+    if(err) throw err;
+    console.log('saved idol');
+});
+
+var idolFour = Idol({
+    name: "Thủy Top",
+    phone: "090xxxxx09",
+    description: "Da trắng, ngực nở, béo múp",
+    img: "https://i.imgur.com/6XdYHw0.jpg",
+}).save(function(err){
+    if(err) throw err;
+    console.log('saved idol');
+}); */
+
 
 app.get('/contact', (req, res)=>{
-    Shoes.find({},function(err, data){
+    Idol.find({},function(err, data){
         if(err) throw err;
-        saveShoes(data, function(err){
+        saveIdols(data, function(err){
             console.log(data);
             if(err){
                 console.log('err');
@@ -63,31 +76,10 @@ app.get('/contact', (req, res)=>{
         //res.sendFile(__dirname+'/views/contact.html','utf8');
     });
     
-    function saveShoes(shoe) {
-        fs.writeFileSync(__dirname+'/DALayer/shoes.json', JSON.stringify(shoe, null, 2));
+    function saveIdols(idol) {
+        fs.writeFileSync(__dirname+'/DALayer/idols.json', JSON.stringify(idol, null, 2));
       }
 });
-
-/* app.get('/home', (req,res)=>{
-    console.log('request url: '+req.url);
-    //console.log(__dirname,__filename);
-    res.render(__dirname + '/index.ejs');
-});
-app.get('/contact', (req,res)=>{
-    console.log('request url: '+req.url);
-    //console.log(__dirname,__filename);
-    res.render(__dirname + '/contact.ejs');
-});
-app.post('/contact', urlencodedParser , (req,res)=>{
-    console.log('request url: '+req.url);
-    console.log(req.body);
-    res.render(__dirname + '/contact-success.ejs', {user : req.body});
-});
-app.get('*', (req,res)=>{
-    console.log('request url: '+req.url);
-    //console.log(__dirname,__filename);
-    res.render(__dirname + '/404.ejs');
-}); */
 
 
 app.listen(9999, function(){

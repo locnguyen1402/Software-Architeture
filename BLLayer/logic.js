@@ -1,23 +1,27 @@
-var shoe = require('../DALayer/shoes.json');
-/* fs.readFile('../DALayer/shoes.json',(err, data)=>{
-    if(err) throw err;
-    shoe = JSON.parse(data);
-    //console.log(shoe);
-});
- */
-var temp = new Array(shoe.length);
+var idols = require('../DALayer/idols.json');
+
+
+var arr = new Array(idols.length);
 var table = document.getElementById('table');
-var button = document.getElementById('abc');
-//alert(shoe.length);
- function a(){
-    for (let i = 0; i < shoe.length; i++) {
-        temp[i] = table.insertRow();
-            temp[i].insertCell().innerHTML = shoe[i].id;
-            temp[i].insertCell().innerHTML = shoe[i].brand;
-            temp[i].insertCell().innerHTML = shoe[i].color;
-            temp[i].insertCell().innerHTML = shoe[i].price;
-    };    
+
+function loadIdols() {
+    var img;
+    for (var i = 0; i < idols.length; i++) {
+        img = document.createElement('img');
+        arr[i] = table.insertRow();
+        arr[i].insertCell().innerHTML = idols[i].name;
+        arr[i].insertCell().innerHTML = idols[i].phone;
+        arr[i].insertCell().innerHTML = idols[i].description;
+        img.src = idols[i].img;
+        img.classList.add('imgIdol');
+        arr[i].insertCell().appendChild(img);
+    };
 }
-button.addEventListener('click', function(){
-    a();
-});
+loadIdols();
+
+var imgIdols = document.getElementsByClassName('imgIdol'); // 0 1 2 3
+function getIndex(ev) {
+    var els = Array.prototype.slice.call(document.getElementsByClassName('imgIdol'), 0);
+    console.log(els.indexOf(ev.target));
+}
+getIndex();
