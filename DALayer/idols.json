@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "5bbf3e7647fc422058ce21fe",
+    "name": "Elly Trần",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực khủng",
+    "img": "https://i.imgur.com/bLcYlrM.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "5bbf3e7647fc422058ce21ff",
+    "name": "Minh Tú",
+    "phone": "090xxxxx09",
+    "description": "Da ngâm, nóng bỏng và môi cong",
+    "img": "https://i.imgur.com/75warp7.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "5bbf3e7647fc422058ce2200",
+    "name": "Phạm Hương",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực nở",
+    "img": "https://i.imgur.com/aOr0TQ0.jpg",
+    "__v": 0
+  },
+  {
+    "_id": "5bbf3e7647fc422058ce2201",
+    "name": "Thủy Top",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực nở, béo múp",
+    "img": "https://i.imgur.com/6XdYHw0.jpg",
+    "__v": 0
+  }
+]

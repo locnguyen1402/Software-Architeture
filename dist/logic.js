@@ -1,67 +1,63 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-var shoe = require('../DALayer/shoes.json');
-/* fs.readFile('../DALayer/shoes.json',(err, data)=>{
-    if(err) throw err;
-    shoe = JSON.parse(data);
-    //console.log(shoe);
-});
- */
-var temp = new Array(shoe.length);
+var idols = require('../DALayer/idols.json');
+
+
+var arr = new Array(idols.length);
 var table = document.getElementById('table');
-var button = document.getElementById('abc');
-//alert(shoe.length);
- function a(){
-    for (let i = 0; i < shoe.length; i++) {
-        temp[i] = table.insertRow();
-            temp[i].insertCell().innerHTML = shoe[i].id;
-            temp[i].insertCell().innerHTML = shoe[i].brand;
-            temp[i].insertCell().innerHTML = shoe[i].color;
-            temp[i].insertCell().innerHTML = shoe[i].price;
-    };    
+
+function loadIdols() {
+    var img;
+    for (var i = 0; i < idols.length; i++) {
+        img = document.createElement('img');
+        arr[i] = table.insertRow();
+        arr[i].insertCell().innerHTML = idols[i].name;
+        arr[i].insertCell().innerHTML = idols[i].phone;
+        arr[i].insertCell().innerHTML = idols[i].description;
+        img.src = idols[i].img;
+        img.classList.add('imgIdol');
+        arr[i].insertCell().appendChild(img);
+    };
 }
-button.addEventListener('click', function(){
-    a();
-});
-},{"../DALayer/shoes.json":2}],2:[function(require,module,exports){
+loadIdols();
+
+var imgIdols = document.getElementsByClassName('imgIdol'); // 0 1 2 3
+function getIndex(ev) {
+    var els = Array.prototype.slice.call(document.getElementsByClassName('imgIdol'), 0);
+    console.log(els.indexOf(ev.target));
+}
+getIndex();
+},{"../DALayer/idols.json":2}],2:[function(require,module,exports){
 module.exports=[
   {
-    "_id": "5bbe30fef1704221fccbd94c",
-    "id": 1,
-    "brand": "adidas",
-    "color": "blue",
-    "price": 1500,
+    "_id": "5bbf3e7647fc422058ce21fe",
+    "name": "Elly Trần",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực khủng",
+    "img": "https://i.imgur.com/bLcYlrM.jpg",
     "__v": 0
   },
   {
-    "_id": "5bbe30fef1704221fccbd94e",
-    "id": 3,
-    "brand": "bitis",
-    "color": "blue",
-    "price": 1500,
+    "_id": "5bbf3e7647fc422058ce21ff",
+    "name": "Minh Tú",
+    "phone": "090xxxxx09",
+    "description": "Da ngâm, nóng bỏng và môi cong",
+    "img": "https://i.imgur.com/75warp7.jpg",
     "__v": 0
   },
   {
-    "_id": "5bbe30fef1704221fccbd94d",
-    "id": 2,
-    "brand": "nike",
-    "color": "blue",
-    "price": 1500,
+    "_id": "5bbf3e7647fc422058ce2200",
+    "name": "Phạm Hương",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực nở",
+    "img": "https://i.imgur.com/aOr0TQ0.jpg",
     "__v": 0
   },
   {
-    "_id": "5bbe30fef1704221fccbd94f",
-    "id": 4,
-    "brand": "adidas",
-    "color": "blue",
-    "price": 1500,
-    "__v": 0
-  },
-  {
-    "_id": "5bbe30fef1704221fccbd950",
-    "id": 5,
-    "brand": "puma",
-    "color": "blue",
-    "price": 1500,
+    "_id": "5bbf3e7647fc422058ce2201",
+    "name": "Thủy Top",
+    "phone": "090xxxxx09",
+    "description": "Da trắng, ngực nở, béo múp",
+    "img": "https://i.imgur.com/6XdYHw0.jpg",
     "__v": 0
   }
 ]
