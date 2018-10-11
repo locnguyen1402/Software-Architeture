@@ -1,0 +1,25 @@
+{
+  "name": "shoeshop",
+  "version": "1.0.0",
+  "description": "3 layers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locnguyen1402/Software-Architeture.git"
+  },
+  "author": "Loc Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/locnguyen1402/Software-Architeture/issues"
+  },
+  "homepage": "https://github.com/locnguyen1402/Software-Architeture#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.2"
+  }
+}
